@@ -1,0 +1,56 @@
+.loading-container {
+  min-height: 100vh;
+  color: #17131d;
+  background: #f5f4f8;
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+}
+.loading-container::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(23, 19, 29, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(23, 19, 29, .035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  content: '';
+}
+.loading-container .loading-shell { position: relative; z-index: 1; display: flex; width: min(100%, 1180px); min-height: 100vh; padding: 42px 64px 100px; margin: 0 auto; flex-direction: column; }
+.loading-container .loading-header { display: flex; align-items: center; justify-content: space-between; }
+.loading-container .loading-logo { width: 138px; height: auto; object-fit: contain; }
+.loading-container .loading-status { display: inline-flex; align-items: center; gap: 9px; padding: 9px 14px; border: 1px solid rgba(23, 19, 29, .1); border-radius: 999px; color: #686270; background: rgba(255, 255, 255, .68); font-size: 12px; font-weight: 600; }
+.loading-container .loading-status span { width: 7px; height: 7px; border-radius: 50%; background: #a100ff; box-shadow: 0 0 0 4px rgba(161, 0, 255, .1); animation: loading-pulse 1.4s ease-in-out infinite; }
+.loading-container .loading-content { display: flex; flex: 1; width: min(100%, 680px); padding-top: 52px; justify-content: center; flex-direction: column; }
+.loading-container .loading-title-row { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 22px; align-items: start; }
+.loading-container .loading-symbol { grid-column: 1; grid-row: 2; display: grid; width: 58px; height: 58px; place-items: center; border-radius: 17px; color: #fff; background: #a100ff; box-shadow: 0 12px 24px rgba(161, 0, 255, .2); animation: loading-enter 500ms ease-out both; }
+.loading-container .loading-eyebrow { grid-column: 2; grid-row: 1; margin: 0 0 10px; color: #a100ff; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.loading-container .loading-text { grid-column: 2; grid-row: 2; margin: 0; color: #17131d; font-family: 'Space Grotesk', sans-serif; font-size: clamp(38px, 5.1vw, 62px); font-weight: 700; letter-spacing: -2px; line-height: 1.02; animation: loading-enter 550ms 60ms ease-out both; }
+.loading-container .loading-subtitle { max-width: 480px; margin: 22px 0 28px 80px; color: #686270; font-size: 17px; line-height: 1.6; animation: loading-enter 550ms 120ms ease-out both; }
+.loading-container .loading-progress { width: min(calc(100% - 80px), 360px); height: 4px; margin-left: 80px; overflow: hidden; border-radius: 999px; background: rgba(23, 19, 29, .1); }
+.loading-container .loading-progress span { display: block; width: 38%; height: 100%; border-radius: inherit; background: #a100ff; animation: loading-progress 1.3s ease-in-out infinite; }
+.loading-container .loading-note { margin: 0; color: #86808d; font-size: 12px; letter-spacing: .2px; }
+
+
+@keyframes loading-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes loading-progress { 0% { transform: translateX(-120%); } 100% { transform: translateX(365%); } }
+@keyframes loading-pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(161, 0, 255, .1); } 50% { box-shadow: 0 0 0 7px rgba(161, 0, 255, .04); } }@media (max-width: 700px) {
+.loading-container .loading-shell { padding: 28px 24px 82px; }
+.loading-container .loading-logo { width: 116px; }
+.loading-container .loading-status { padding: 8px 11px; font-size: 11px; }
+.loading-container .loading-content { padding-top: 42px; }
+.loading-container .loading-title-row { column-gap: 14px; }
+.loading-container .loading-symbol { width: 46px; height: 46px; border-radius: 14px; }
+.loading-container .loading-text { font-size: 42px; letter-spacing: -1.2px; }
+.loading-container .loading-subtitle,.loading-container .loading-progress { margin-left: 0; }
+.loading-container .loading-subtitle { font-size: 16px; }
+.loading-container .loading-progress { width: min(100%, 360px); }
+
+
+}
+@media (max-width: 430px) {
+.loading-container .loading-shell { padding: 24px 20px 56px; }
+.loading-container .loading-status { font-size: 0; }
+.loading-container .loading-status span { margin: 1px; }
+.loading-container .loading-text { font-size: 38px; }
+
+
+}
+
